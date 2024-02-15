@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richard Costa's Branch/Distributor Information</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Tippy.js CDN -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link href="https://unpkg.com/tippy.js@6/dist/tippy.css" rel="stylesheet">
+    <style>
+        .bg-navy-blue {
+            background-color: #25215E;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #25215E, #1A174D);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+            border-radius: 8px; /* Adjust border-radius to match cards */
+        }
+
+        .card p {
+            color: inherit;
+        }
+
+        .copy-text {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 6px 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .copy-text:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .header-image {
+            height: 150px; /* Set height of the image */
+            width: 100%;
+            object-fit: cover; /* Ensure image covers the container */
+            border-radius: 8px; /* Set border-radius to match cards */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 640px) {
+            .header-image {
+                height: auto; /* Reset height for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-white p-4">
+    <!-- Header with image -->
+    <div class="max-w-4xl mx-auto mb-6">
+        <img src="https://i.ibb.co/nchDLZK/Dark-Simple-Future-Linked-In-Banner.png" alt="Dark-Simple-Future-Linked-In-Banner" border="0" class="header-image">
+    </div>
+
+    <!-- Main content -->
+    <div class="max-w-4xl mx-auto">
+        <!-- Search input -->
+        <input type="text" id="searchInput" placeholder="Search by Branch Code or Name" class="w-full px-4 py-2 mb-4 rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-300 bg-navy-blue text-white">
+
+        <!-- Cards to display data -->
+        <div id="cardContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Card data will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Include Tailwind CSS for styling -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Define the data directly in JavaScript
+        const data = [
+  
+  {
+    "Branch": {
+      "Distributor Code": "IP13",
+      "Distributor Name": "IBL Tongi Branch"
+    },
+    "Location": "6/2 Shahid Sundar Ali Road, Tongi",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP02",
+      "Distributor Name": "IBL Mirpur Branch"
+    },
+    "Location": "N/A",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000151",
+      "Distributor Name": "Deen Enterprise"
+    },
+    "Location": "Saidpur",
+    "District": "Saidpur",
+    "Nearest Branch": "Rangpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP28",
+      "Distributor Name": "IBL Green Road Branch"
+    },
+    "Location": "N/A",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP10",
+      "Distributor Name": "IBL Jessore Branch"
+    },
+    "Location": "126, OLD KASHBA, DHAKA ROAD,JESSORE",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP22",
+      "Distributor Name": "IBL Dinajpur Branch"
+    },
+    "Location": "PLOT # 4, BLOCK-8, HOUSING MORE,MEDICAL COLLEGE ROAD, DINAJPUR",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP09",
+      "Distributor Name": "IBL Khulna Branch"
+    },
+    "Location": "252/3, SHER-E-BANGLA ROAD (OPP. SOS SHISHUPOLLI),SONADANGA, KHULNA",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP15",
+      "Distributor Name": "IBL Halishahar Branch"
+    },
+    "Location": "Holding No: 878, Shantibag Road: 01, Opposite of AR tower, Agrabad access road, P.S- Halishahar, Chattogram.",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP18",
+      "Distributor Name": "IBL Cumilla Branch"
+    },
+    "Location": "SHAWRONIKA, 1st FLOOR, HOLDING NO-175, WORD-09, ASHOKTOLA MOR, CHOWMOHONI, CUMILLA",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP20",
+      "Distributor Name": "IBL Rajshahi Branch"
+    },
+    "Location": "182/2 UPOSHOUR,CANTONMENT,BOALIA,RAJSHAHI",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP03",
+      "Distributor Name": "IBL Dhanmondi Branch"
+    },
+    "Location": "N/A",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP16",
+      "Distributor Name": "IBL Brahmanbaria Branch"
+    },
+    "Location": "HOLDING # 940,  ULLAS COMMUNITY COMPLEX,MOTALIB TOWER, EAST MEDDA, B. BARIA",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP21",
+      "Distributor Name": "IBL Tangail Branch"
+    },
+    "Location": "864/1, SHANTIKUNJER MOR, YATIMKHANA ROAD,BAPARIPARA, TANGAIL",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000059",
+      "Distributor Name": "Jerin Enterprise"
+    },
+    "Location": "Tongibazar",
+    "District": "N/A",
+    "Nearest Branch": "CWH",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000281",
+      "Distributor Name": "Rahman Cosmetics"
+    },
+    "Location": "Narail",
+    "District": "N/A",
+    "Nearest Branch": "Jashore",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000107",
+      "Distributor Name": "Nahar Trading"
+    },
+    "Location": "Jamalpur",
+    "District": "N/A",
+    "Nearest Branch": "Mymensingh",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000111",
+      "Distributor Name": "Diptta Traders"
+    },
+    "Location": "Gaibandha",
+    "District": "N/A",
+    "Nearest Branch": "Rangpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000266",
+      "Distributor Name": "M/S Farhan Traders"
+    },
+    "Location": "Sathia Pabna",
+    "District": "N/A",
+    "Nearest Branch": "Rajshahi/Bogura",
+    "Courier Name": "Sadhin Bangla Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP29",
+      "Distributor Name": "IBL Asulia Branch"
+    },
+    "Location": "N/A",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP05",
+      "Distributor Name": "IBL Gulshan Branch"
+    },
+    "Location": "N/A",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP01",
+      "Distributor Name": "IBL Uttara Branch"
+    },
+    "Location": "N/A",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000165",
+      "Distributor Name": "Ahmad S Builders"
+    },
+    "Location": "Chudanga",
+    "District": "N/A",
+    "Nearest Branch": "Jashore",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000220",
+      "Distributor Name": "M/S Zahir Traders"
+    },
+    "Location": "Kurigram",
+    "District": "N/A",
+    "Nearest Branch": "Rangpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000268",
+      "Distributor Name": "AIZA TRADE LINK"
+    },
+    "Location": "Jenaidah",
+    "District": "N/A",
+    "Nearest Branch": "Jashore",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP23",
+      "Distributor Name": "IBL Bogura Branch"
+    },
+    "Location": "HOLDING # 84/85, WATER TANKY ROAD,SEWSGARI, BOGURA",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP17",
+      "Distributor Name": "IBL Noakhali Branch"
+    },
+    "Location": "FOUZIA VILLA, NEW POLICE LINE ROAD,MAIZDEE BAZAR, NOAKHALI",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000209",
+      "Distributor Name": "M/S Bismillah Enterprise"
+    },
+    "Location": "Gausia",
+    "District": "N/A",
+    "Nearest Branch": "Narayanganj/Uttara",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP24",
+      "Distributor Name": "IBL Jatrabari Branch"
+    },
+    "Location": "Holding# 1626, Al-Kharij Tower, Shamim Bug, Matuail Hospital Road, Kadamtali, DHAKA-1362",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP04",
+      "Distributor Name": "IBL Shantinagar Branch"
+    },
+    "Location": "N/A",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000191",
+      "Distributor Name": "Mama Vagne Enterprize"
+    },
+    "Location": "Kumarkhali Kushtia",
+    "District": "N/A",
+    "Nearest Branch": "Jashore",
+    "Courier Name": "Sabuz Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000270",
+      "Distributor Name": "NIJHUM NISHI ENTERPRISE"
+    },
+    "Location": "Magura",
+    "District": "N/A",
+    "Nearest Branch": "Jashore",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000296",
+      "Distributor Name": "Tanha Traders"
+    },
+    "Location": "Pabna",
+    "District": "N/A",
+    "Nearest Branch": "Bogura",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000090",
+      "Distributor Name": "SARABELA STORE"
+    },
+    "Location": "Valuka",
+    "District": "N/A",
+    "Nearest Branch": "Mymensingh",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000260",
+      "Distributor Name": "Yamin Enterprise"
+    },
+    "Location": "Bosurhat Noakhali",
+    "District": "N/A",
+    "Nearest Branch": "Noakhali",
+    "Courier Name": "Chistia Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000105",
+      "Distributor Name": "M/S Sohel Traders"
+    },
+    "Location": "Gouripur Cumilla",
+    "District": "N/A",
+    "Nearest Branch": "Cumilla",
+    "Courier Name": "Allah'ar Dan Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000097",
+      "Distributor Name": "Ma Durga General Store"
+    },
+    "Location": "Kalihati",
+    "District": "N/A",
+    "Nearest Branch": "Tangail",
+    "Courier Name": "New Tangail Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000173",
+      "Distributor Name": "Mahisha Fashion"
+    },
+    "Location": "Hajiganj Chadpur",
+    "District": "N/A",
+    "Nearest Branch": "Cumilla",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000119",
+      "Distributor Name": "Mahmud Traders"
+    },
+    "Location": "Laksam Cumilla",
+    "District": "N/A",
+    "Nearest Branch": "Cumilla",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000168",
+      "Distributor Name": "M/S Eva Enterprise"
+    },
+    "Location": "Patualhali",
+    "District": "N/A",
+    "Nearest Branch": "Barishal",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000214",
+      "Distributor Name": "H Traders"
+    },
+    "Location": "Panchagarh",
+    "District": "N/A",
+    "Nearest Branch": "Dinajpur",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000155",
+      "Distributor Name": "M/S Radowan Traders"
+    },
+    "Location": "Chatkhil Noakhali",
+    "District": "N/A",
+    "Nearest Branch": "Noakhali",
+    "Courier Name": "Ramganj Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000185",
+      "Distributor Name": "M/S Soha Enterprise"
+    },
+    "Location": "Chokoria Coxsbazar",
+    "District": "N/A",
+    "Nearest Branch": "Coxsbazar",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000261",
+      "Distributor Name": "Mamun Cosmetics"
+    },
+    "Location": "Feni",
+    "District": "N/A",
+    "Nearest Branch": "Noakhali",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000164",
+      "Distributor Name": "M/S RATAN TRADERS"
+    },
+    "Location": "Veramara Kustia",
+    "District": "N/A",
+    "Nearest Branch": "Jashore",
+    "Courier Name": "The Lion Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000170",
+      "Distributor Name": "B.M. Traders"
+    },
+    "Location": "Vanga Faridpur",
+    "District": "N/A",
+    "Nearest Branch": "Faridpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000280",
+      "Distributor Name": "M/S Hazi Rabbani Enterprise"
+    },
+    "Location": "Narshingdi",
+    "District": "N/A",
+    "Nearest Branch": "Narayanganj",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000142",
+      "Distributor Name": "Al Modina Fashion House"
+    },
+    "Location": "Palash Narshingdi",
+    "District": "N/A",
+    "Nearest Branch": "Narayanganj",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000074",
+      "Distributor Name": "Vai Vai Enterprise"
+    },
+    "Location": "Mauna, Gazipur",
+    "District": "N/A",
+    "Nearest Branch": "Uttara/Tongi/CWH",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000082",
+      "Distributor Name": "S. ISLAM ENTERPRISE"
+    },
+    "Location": "Gopalganj",
+    "District": "N/A",
+    "Nearest Branch": "Faridpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000162",
+      "Distributor Name": "M/S Paul Store"
+    },
+    "Location": "Rajbari",
+    "District": "N/A",
+    "Nearest Branch": "Faridpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000182",
+      "Distributor Name": "Asraf Store"
+    },
+    "Location": "Borguna",
+    "District": "N/A",
+    "Nearest Branch": "Barishal",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000213",
+      "Distributor Name": "Bondhu Library"
+    },
+    "Location": "Mugtagacha Mymensingh",
+    "District": "N/A",
+    "Nearest Branch": "Mymensingh",
+    "Courier Name": "Bismillah Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000085",
+      "Distributor Name": "KHALEK ENTERPRISE"
+    },
+    "Location": "Modhupur",
+    "District": "N/A",
+    "Nearest Branch": "Tangail",
+    "Courier Name": "New Tangail Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000083",
+      "Distributor Name": "M/S Rahman Corporation"
+    },
+    "Location": "Dolonbazar",
+    "District": "N/A",
+    "Nearest Branch": "Uttara/Tongi/CWH",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000206",
+      "Distributor Name": "Abdul Kaddus Bachchu"
+    },
+    "Location": "Phulpur Mymensingh",
+    "District": "N/A",
+    "Nearest Branch": "Mymensingh",
+    "Courier Name": "Doyel Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000070",
+      "Distributor Name": "MALOTI TRADERS"
+    },
+    "Location": "Shirajganj",
+    "District": "N/A",
+    "Nearest Branch": "Bogura",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000069",
+      "Distributor Name": "NAGAR BANIK STORE"
+    },
+    "Location": "Ashulia",
+    "District": "N/A",
+    "Nearest Branch": "Ashulia",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000040",
+      "Distributor Name": "M/S Banik & Brothers"
+    },
+    "Location": "Savar",
+    "District": "N/A",
+    "Nearest Branch": "Ashulia",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000183",
+      "Distributor Name": "M/S Komol Enterprise, Batajor"
+    },
+    "Location": "Batajor Barishal",
+    "District": "N/A",
+    "Nearest Branch": "Barishal",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000200",
+      "Distributor Name": "M/S Anonna Enterprise"
+    },
+    "Location": "Sreemangal",
+    "District": "N/A",
+    "Nearest Branch": "Sylhet",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000230",
+      "Distributor Name": "S.S Trading"
+    },
+    "Location": "Joydevpur",
+    "District": "N/A",
+    "Nearest Branch": "Uttara/Tongi/CWH",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000158",
+      "Distributor Name": "M/S Sarder Enterprise"
+    },
+    "Location": "Pirojpur",
+    "District": "N/A",
+    "Nearest Branch": "Barishal",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000179",
+      "Distributor Name": "M/S Ittadi Traders"
+    },
+    "Location": "Jhalkhthi",
+    "District": "N/A",
+    "Nearest Branch": "Barishal",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000153",
+      "Distributor Name": "Kawsar & Brothers"
+    },
+    "Location": "Bissonath Sylhet",
+    "District": "N/A",
+    "Nearest Branch": "Sylhet",
+    "Courier Name": "Sugandha Parcel Ltd"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000150",
+      "Distributor Name": "M/S Mahmud Traders"
+    },
+    "Location": "Nilphamari",
+    "District": "N/A",
+    "Nearest Branch": "Rangpur/Dinajpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000287",
+      "Distributor Name": "Dorbar Cosmetics"
+    },
+    "Location": "Rangunia Chittagong",
+    "District": "N/A",
+    "Nearest Branch": "Chittagong",
+    "Courier Name": "Bismillah Paribahan"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000295",
+      "Distributor Name": "M/S K.C Enterprise"
+    },
+    "Location": "Manikganj",
+    "District": "N/A",
+    "Nearest Branch": "Ashulia",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000301",
+      "Distributor Name": "Ariyan Cosmetics"
+    },
+    "Location": "Nabinagar B.Baria",
+    "District": "N/A",
+    "Nearest Branch": "B Baria",
+    "Courier Name": "New Mitali Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000116",
+      "Distributor Name": "M/S BODHUSHAJ COSMETICS"
+    },
+    "Location": "Bairab Kishorganj",
+    "District": "N/A",
+    "Nearest Branch": "B Baria",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000171",
+      "Distributor Name": "M/S Kamal Enterprise, Madaripur"
+    },
+    "Location": "Madaripur",
+    "District": "N/A",
+    "Nearest Branch": "Faridpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000193",
+      "Distributor Name": "M/S Mahbub Enterprise"
+    },
+    "Location": "Singair Manikganj",
+    "District": "N/A",
+    "Nearest Branch": "Ashulia",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000141",
+      "Distributor Name": "M/S. Bhai Bhai Traders"
+    },
+    "Location": "Munshiganj",
+    "District": "N/A",
+    "Nearest Branch": "Narayanganj",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000159",
+      "Distributor Name": "M/S Dey Traders"
+    },
+    "Location": "Sariyatpur",
+    "District": "N/A",
+    "Nearest Branch": "Faridpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000184",
+      "Distributor Name": "M/S Prithi Enterprise"
+    },
+    "Location": "Mithapukur Rangpur",
+    "District": "N/A",
+    "Nearest Branch": "Rangpur",
+    "Courier Name": "Mala Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000005",
+      "Distributor Name": "Take & Pay"
+    },
+    "Location": "Moulovibazar",
+    "District": "N/A",
+    "Nearest Branch": "Sylhet",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000285",
+      "Distributor Name": "Anukul Enterprise"
+    },
+    "Location": "Patiya",
+    "District": "N/A",
+    "Nearest Branch": "Coxsbazar",
+    "Courier Name": "Five Star Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000091",
+      "Distributor Name": "M/S Joy Enterprise"
+    },
+    "Location": "Natore",
+    "District": "N/A",
+    "Nearest Branch": "Rajshahi",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000284",
+      "Distributor Name": "M S Enterprise"
+    },
+    "Location": "Khulna",
+    "District": "N/A",
+    "Nearest Branch": "Khulna",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000089",
+      "Distributor Name": "BADOL STORE"
+    },
+    "Location": "Netrakona",
+    "District": "N/A",
+    "Nearest Branch": "Mymensingh",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000123",
+      "Distributor Name": "M/S. NUSAIBA STORE"
+    },
+    "Location": "Laxmipur",
+    "District": "N/A",
+    "Nearest Branch": "Noakhali",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000255",
+      "Distributor Name": "Sharp Netwark"
+    },
+    "Location": "Kustia",
+    "District": "N/A",
+    "Nearest Branch": "Jashore",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000221",
+      "Distributor Name": "M. R Traders"
+    },
+    "Location": "Govindaganj Gaibanda",
+    "District": "N/A",
+    "Nearest Branch": "Rangpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000218",
+      "Distributor Name": "M/S Abdul Mazed Store"
+    },
+    "Location": "Sherpur Bogura",
+    "District": "N/A",
+    "Nearest Branch": "Bogura",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000194",
+      "Distributor Name": "Anukul Traders"
+    },
+    "Location": "Khagrachari",
+    "District": "N/A",
+    "Nearest Branch": "Chittagong",
+    "Courier Name": "Bismillah Paribahan"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000297",
+      "Distributor Name": "M/S Nipa Store"
+    },
+    "Location": "Lalmonirhat",
+    "District": "N/A",
+    "Nearest Branch": "Rangpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000250",
+      "Distributor Name": "Haj Rafiq Store"
+    },
+    "Location": "Sonargaon Narayanganj",
+    "District": "N/A",
+    "Nearest Branch": "Narayanganj",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000167",
+      "Distributor Name": "AMIN BROTHERS"
+    },
+    "Location": "Borolekha Moulovibazar",
+    "District": "N/A",
+    "Nearest Branch": "Sylhet",
+    "Courier Name": "Green Bangla Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000087",
+      "Distributor Name": "ANTU TRADERS"
+    },
+    "Location": "Buyapur Tangail",
+    "District": "N/A",
+    "Nearest Branch": "Tangail",
+    "Courier Name": "New Tangail Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000071",
+      "Distributor Name": "Asraf Enterprise"
+    },
+    "Location": "Chadpur",
+    "District": "N/A",
+    "Nearest Branch": "Cumilla",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000121",
+      "Distributor Name": "Sathi Enterprise"
+    },
+    "Location": "Dohar Keraniganj",
+    "District": "N/A",
+    "Nearest Branch": "Chawkbazar/Jatrabari",
+    "Courier Name": "Dhaka Courier"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP06",
+      "Distributor Name": "IBL Narayanganj Branch"
+    },
+    "Location": "32/2 Isakha Road, Shitalakkha Housing, Killarpull, Narayangonj",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP31",
+      "Distributor Name": "IBL Naogaon Branch"
+    },
+    "Location": "5068, Kumaigari, Naogaon.",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP27",
+      "Distributor Name": "IBL Nazipur Branch"
+    },
+    "Location": "Mousumi, Holding # 434/1 Palsa, Panitola (Opsite of Mamun Filling Station), Nazipur-6540.",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP12",
+      "Distributor Name": "IBL Sylhet Branch"
+    },
+    "Location": "KALAM’S HOME,70/A, ANTARANGA, KAZI TOLA (NORTH),Sylhet",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP07",
+      "Distributor Name": "IBL Chittagong Branch"
+    },
+    "Location": "House# 6, Road# 3, Nasirabad Housing Socity , Chattogram.",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP08",
+      "Distributor Name": "IBL Rangpur Branch"
+    },
+    "Location": "35, SENPARA ROAD,RANGPUR",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP26",
+      "Distributor Name": "IBL Cox's Bazar Branch"
+    },
+    "Location": "SARAS, MIDDLE TEK PARA,COX’S BAZAR",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP19",
+      "Distributor Name": "IBL Barishal Branch"
+    },
+    "Location": "SALEHA MANJIL, 65/57, KALU SHAH SARAK,BARISAL",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP25",
+      "Distributor Name": "IBL Faridpur Branch"
+    },
+    "Location": "20/7, FARID SHAH ROAD, ZHILTULI,FARIDPUR",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP11",
+      "Distributor Name": "IBL Mymensingh Branch"
+    },
+    "Location": "HOUSE NAME: UCHI, 306/24 AMIRABAD HOUSING,MASKANDA, DHAKA ROAD, MYMENSINGH",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000181",
+      "Distributor Name": "M/S Mintu Store"
+    },
+    "Location": "Enayetganj Habiganj",
+    "District": "N/A",
+    "Nearest Branch": "Sylhet",
+    "Courier Name": "Mohammadi Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000160",
+      "Distributor Name": "M/S. SOHAG ENTERPRICE"
+    },
+    "Location": "Shibchar Madaripur",
+    "District": "N/A",
+    "Nearest Branch": "Faridpur",
+    "Courier Name": "New Palong Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000096",
+      "Distributor Name": "Ideal Enterprise"
+    },
+    "Location": "Mirzapur",
+    "District": "N/A",
+    "Nearest Branch": "Tangail",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000095",
+      "Distributor Name": "Lokkhi Narayon Bhandar"
+    },
+    "Location": "Habiganj",
+    "District": "N/A",
+    "Nearest Branch": "Sylhet",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000290",
+      "Distributor Name": "Al Fattah Store"
+    },
+    "Location": "Thakurgaon ",
+    "District": "N/A",
+    "Nearest Branch": "Dinajpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000215",
+      "Distributor Name": "Abdullah And Rafi Enterprise"
+    },
+    "Location": "Dhamrai Savar",
+    "District": "N/A",
+    "Nearest Branch": "Ashulia",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000177",
+      "Distributor Name": "MS Shambhu Nath & Son's"
+    },
+    "Location": "Bhola",
+    "District": "N/A",
+    "Nearest Branch": "Barishal",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000073",
+      "Distributor Name": "RM Distribtion"
+    },
+    "Location": "Kishorganj",
+    "District": "N/A",
+    "Nearest Branch": "Mymensingh",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000122",
+      "Distributor Name": "PROCHESTA ENTERPRISE"
+    },
+    "Location": "Bagerhat",
+    "District": "N/A",
+    "Nearest Branch": "Khulna",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000180",
+      "Distributor Name": "M/S S Ahamed & Son’s"
+    },
+    "Location": "Charfashion Bhola",
+    "District": "N/A",
+    "Nearest Branch": "Barishal",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000282",
+      "Distributor Name": "M/S Munim Enterprise"
+    },
+    "Location": "Dupchachia Bogura",
+    "District": "N/A",
+    "Nearest Branch": "Bogura",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000143",
+      "Distributor Name": "M/S Anower Morjina"
+    },
+    "Location": "Sherpur Jamalpur",
+    "District": "N/A",
+    "Nearest Branch": "Mymensingh",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000291",
+      "Distributor Name": "Cosmetics Collection"
+    },
+    "Location": "Riajuddinbazar Chittagong",
+    "District": "N/A",
+    "Nearest Branch": "Chittagong",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000109",
+      "Distributor Name": "Al Amin Store"
+    },
+    "Location": "Chapai",
+    "District": "N/A",
+    "Nearest Branch": "Rajshahi",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000269",
+      "Distributor Name": "M/S JAMAN STORE"
+    },
+    "Location": "Kaliganj Jenaidah",
+    "District": "N/A",
+    "Nearest Branch": "Jashore",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000130",
+      "Distributor Name": "Three Brothers Store"
+    },
+    "Location": "Bagha Rajshahi",
+    "District": "N/A",
+    "Nearest Branch": "Rajshahi",
+    "Courier Name": "Sadhin Bangla Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000084",
+      "Distributor Name": "ROKEYA ENTERPRISE"
+    },
+    "Location": "Sunamganj",
+    "District": "N/A",
+    "Nearest Branch": "Sylhet",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000172",
+      "Distributor Name": "M/S Sikder Enterprise"
+    },
+    "Location": "Keranirhat Chittagong",
+    "District": "N/A",
+    "Nearest Branch": "Chittagong",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000124",
+      "Distributor Name": "M/S Hasan Enterprise"
+    },
+    "Location": "Jaypurhat Bogura",
+    "District": "N/A",
+    "Nearest Branch": "Bogura",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000166",
+      "Distributor Name": "M/S Rafia Enterprise"
+    },
+    "Location": "Satkhira",
+    "District": "N/A",
+    "Nearest Branch": "Khulna",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000175",
+      "Distributor Name": "M/S Reza Enterprise"
+    },
+    "Location": "Meherpur Gangni",
+    "District": "N/A",
+    "Nearest Branch": "Jashore",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000190",
+      "Distributor Name": "M/S Al Amin Traders"
+    },
+    "Location": "Rangamati",
+    "District": "N/A",
+    "Nearest Branch": "Chittagong",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000169",
+      "Distributor Name": "Sumona Enterprise"
+    },
+    "Location": "Kamrangirchar Dhaka",
+    "District": "N/A",
+    "Nearest Branch": "Dhanmandi",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000118",
+      "Distributor Name": "Bhai Bhai Traders"
+    },
+    "Location": "Keraniganj",
+    "District": "N/A",
+    "Nearest Branch": "Jatrabari",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "IP33",
+      "Distributor Name": "IBL Chandina Branch"
+    },
+    "Location": "N/A",
+    "District": "N/A",
+    "Nearest Branch": "N/A",
+    "Courier Name": "SETS"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000134",
+      "Distributor Name": "MS Rafi Enterprise"
+    },
+    "Location": "Akhaura Bbaria",
+    "District": "N/A",
+    "Nearest Branch": "B Baria",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000305",
+      "Distributor Name": "M/S Ahmed & Co."
+    },
+    "Location": "Khulna",
+    "District": "N/A",
+    "Nearest Branch": "Khulna",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000154",
+      "Distributor Name": "M/S Subuj Traders"
+    },
+    "Location": "Birampur Dinajpur",
+    "District": "N/A",
+    "Nearest Branch": "Dinajpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000231",
+      "Distributor Name": "Sania Store"
+    },
+    "Location": "Melandah Jamalpur",
+    "District": "N/A",
+    "Nearest Branch": "Mymensingh",
+    "Courier Name": "Shahjamal Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000306",
+      "Distributor Name": "Bismillah Enterprise"
+    },
+    "Location": "Kaliakoir Gazipur",
+    "District": "N/A",
+    "Nearest Branch": "Ashulia",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000279",
+      "Distributor Name": "M/S Robin Enterprise"
+    },
+    "Location": "Hemayetpur Savar",
+    "District": "N/A",
+    "Nearest Branch": "Ashulia",
+    "Courier Name": "Rented"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000161",
+      "Distributor Name": "M/S Jugmaya Stationary"
+    },
+    "Location": "Golapganj Sylhet",
+    "District": "N/A",
+    "Nearest Branch": "Sylhet",
+    "Courier Name": "Sugandha Parcel Ltd"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000292",
+      "Distributor Name": "M/S New Shakil Store"
+    },
+    "Location": "Tekerhat Madaripur",
+    "District": "N/A",
+    "Nearest Branch": "Faridpur",
+    "Courier Name": "AJR"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000275",
+      "Distributor Name": "Maa Store Fatikchhari"
+    },
+    "Location": "Fatikchari",
+    "District": "N/A",
+    "Nearest Branch": "Chittagong",
+    "Courier Name": "Superstar Transport"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "60000157",
+      "Distributor Name": "Partha Traders"
+    },
+    "Location": "Sreenagar Munshiganj",
+    "District": "N/A",
+    "Nearest Branch": "Chawkbazar Jatrabari",
+    "Courier Name": "Dhaka Courier"
+  },
+  {
+    "Branch": {
+      "Distributor Code": "N/A",
+      "Distributor Name": "AN Trading /Khaja Traders"
+    },
+    "Location": "Mirsarai Chittagong ",
+    "District": "N/A",
+    "Nearest Branch": "Chittagong ",
+    "Courier Name": "Sitakundu Transport"
+  }
+];
+
+        // Populate cards with data
+        const cardContainer = document.getElementById('cardContainer');
+        data.forEach(function (item, index) {
+            const card = document.createElement('div');
+            card.className = 'card rounded-md shadow-md p-4 relative'; // Set background color and text color
+            card.innerHTML = `
+                <p class="text-2xl mb-3 font-semibold">${item.Branch['Distributor Name']}</p>
+                <p><span class="font-bold">Branch/Distributor Code:</span> ${item.Branch['Distributor Code']}</p>
+                <p><span class="font-bold">Location:</span> ${item.Location}</p>
+                <p><span class="font-bold">District:</span> ${item.District}</p>
+                <p><span class="font-bold">Nearest Branch:</span> ${item['Nearest Branch']}</p>
+                <p><span class="font-bold">Courier Name:</span> ${item['Courier Name']}</p>
+                <div class="copy-text">Copy</div>
+            `;
+
+            const copyText = card.querySelector('.copy-text');
+            copyText.addEventListener('click', function () {
+                copyToClipboard(card.innerText);
+                tippy(copyText, {
+                    content: 'Copied!',
+                    trigger: 'manual',
+                    placement: 'top',
+                    duration: 1000,
+                }).show();
+            });
+
+            cardContainer.appendChild(card);
+        });
+
+        // Function to copy card info to clipboard
+        function copyToClipboard(text) {
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const searchText = this.value.toLowerCase();
+            const cards = cardContainer.getElementsByClassName('card');
+            for (let i = 0; i < cards.length; i++) {
+                const cardText = cards[i].innerText.toLowerCase();
+                const cardBranchName = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+                const cardBranchCode = cards[i].getElementsByTagName('p')[1].innerText.toLowerCase();
+                if (cardBranchName.includes(searchText) || cardBranchCode.includes(searchText)) {
+                    cards[i].style.display = '';
+                } else {
+                    cards[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
